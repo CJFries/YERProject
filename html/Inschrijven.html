@@ -20,10 +20,35 @@
                 </div>
         </header>
         
-        <h1>Link test</h1>
+        <div class="ophaalgegevens">
+        <h1>Haal je gegevens op</h1>
+        <input type="button" value="Ophalen van server" onclick=ophalen()><br><br>
+        <p id="id">id</p>
+        <p id="vnhaal">voornaam</p>
+        <p id="anhaal">achternaam</p>
+        <p id="ratinghaal">rating</p>
+        <p id="geslhaal">geslacht</p>
+        <p id="gebdathaal">geboortedatum</p>  
+        </div>
+       
+        <hr>
 
-        <b>Voornaam: </b><input type="text" value="voornaam" id="vn"><br>
-        <b>Achternaam: </b><input type="text" value="achternaam" id="an">
+        <div class="inschrijfgegevens">
+        <h1>Schrijf je in</h1>
+        <b>Voornaam: </b><input type="text" placeholder="Voornaam" id="vn"><br>
+        <b>Achternaam: </b><input type="text" placeholder="Achternaam" id="an"><br>
+        <b>Rating: </b><input type="number" placeholder="5" id="rating"><br>
+        <section>
+            <label for="geslacht"><b>Geslacht: </b></label>
+            <select name="geslacht" id="geslacht">
+              <option value="Man">Man</option>
+              <option value="Vrouw">Vrouw</option>
+              <option value="ziln">Zeg ik liever niet</option>
+            </select>
+          </section><br>
+          <b>Geboortedatum: </b><input type="date" id="gebdat"><br><br>
+          <input type="button" value="Versturen naar server" onclick=versturen()><br><br>  
+        </div>
 
     </body>
 </html>
