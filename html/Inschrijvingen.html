@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="..\style\generalstyle.css">
+        <script src="..\script\homejs.js"></script>
+        <title>Inschrijven</title>
+    </head>
+
+    <body>
+        <header>
+                <div>
+                    <nav class="navigatie">
+                        <div class="home"><a href="Home.html">Home</a></div>
+                        <div class="toernooi"><a href="Toernooi.html">Toernooi</a></div>
+                        <div class="inschrijvingen"><a href="Inschrijvingen.html">Inschrijvingen</a></div>
+                        <div class="searchbar">
+                            <input type="text" placeholder="Search..." name="search" id="zoekterm">
+                            <button type="submit" onclick=zoeken()>Zoek!</button>
+                        </div>
+                    </nav>
+                </div>
+        </header>
+        <hr>
+
+        <div class="ophaalgegevens">
+        <h1>Zie alle inschijvingen voor het 'Warme Bal Toernooi'</h1>
+        <hr><br>
+        <input type="button" value="Zie alle inschrijvingen" onclick=ophalen()><br><br>
+        </div>
+        <div id="memberlist"></div>
+
+    </body>
+</html>

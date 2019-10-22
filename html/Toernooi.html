@@ -11,30 +11,21 @@
                 <div>
                     <nav class="navigatie">
                         <div class="home"><a href="Home.html">Home</a></div>
-                        <div class="inschrijven"><a href="Inschrijven.html">Inschrijven</a></div>
+                        <div class="toernooi"><a href="Toernooi.html">Toernooi</a></div>
+                        <div class="inschrijvingen"><a href="Inschrijvingen.html">Inschrijvingen</a></div>
                         <div class="searchbar">
-                            <input type="text" placeholder="Search..." name="search">
-                            <button type="submit">Zoek!</button>
+                            <input type="text" placeholder="Search..." name="search" id="zoekterm">
+                            <button type="submit" onclick=zoeken()>Zoek!</button>
                         </div>
                     </nav>
                 </div>
-        </header>
-        
-        <div class="ophaalgegevens">
-        <h1>Haal je gegevens op</h1>
-        <input type="button" value="Ophalen van server" onclick=ophalen()><br><br>
-        <p id="id">id</p>
-        <p id="vnhaal">voornaam</p>
-        <p id="anhaal">achternaam</p>
-        <p id="ratinghaal">rating</p>
-        <p id="geslhaal">geslacht</p>
-        <p id="gebdathaal">geboortedatum</p>  
-        </div>
-       
-        <hr>
+        </header>     
+       <hr>
 
-        <div class="inschrijfgegevens">
-        <h1>Schrijf je in</h1>
+        <div>
+        <h1>Schrijf je hieronder in voor het 'Warme Bal Toernooi'</h1>
+        <hr><br>
+        <form class="inschrijfgegevens">
         <b>Voornaam: </b><input type="text" placeholder="Voornaam" id="vn"><br>
         <b>Achternaam: </b><input type="text" placeholder="Achternaam" id="an"><br>
         <b>Rating: </b><input type="number" placeholder="5" id="rating"><br>
@@ -43,11 +34,11 @@
             <select name="geslacht" id="geslacht">
               <option value="Man">Man</option>
               <option value="Vrouw">Vrouw</option>
-              <option value="ziln">Zeg ik liever niet</option>
-            </select>
+              </select>
           </section><br>
           <b>Geboortedatum: </b><input type="date" id="gebdat"><br><br>
-          <input type="button" value="Versturen naar server" onclick=versturen()><br><br>  
+          <input type="button" value="Schrijf in!" onclick=versturen()><br><br>
+          </form>
         </div>
 
     </body>
