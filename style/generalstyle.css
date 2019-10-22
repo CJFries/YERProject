@@ -1,11 +1,58 @@
+.navigatie {
+    border: 1px solid black;
+    display: flex;
+    margin-left: 1px;
+    margin-right: 1px;
+    font-family: arial;
+    text-transform: uppercase;
+    background-color: #f6b93b;
+    font-weight: bold;
+    font-size: large;
+    justify-content: flex-start;
+  }
+  
+  .navigatie > div {
+    
+    padding: 4px;
+    text-align: center;
+    width: 10em;
+  }
+  
+  .navigatie > .inschrijvingen {
+    background-color: #fad390;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+
+  .navigatie > .home {
+    background-color: #fad390;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+  
+  .navigatie > .searchbar {
+    margin-left: auto;
+    width: 20em;
+  }
+
 h1 {
     color: chocolate;
+    text-align: center;
 }
 
 .inschrijfgegevens {
+    align-self: center;
+    align-items: center;
+    align-content: center;
     text-align: center;
 }
 
 .ophaalgegevens {
     text-align: center;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f6b93b;
 }
