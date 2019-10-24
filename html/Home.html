@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="..\style\generalstyle.css">
         <script src="..\script\homejs.js"></script>
+        <script src="..\script\jquery-3.4.1.min.js"></script>
         <title>Squashclub De Warme Bal</title>
     </head>
 
@@ -12,7 +13,7 @@
                 <nav class="navigatie">
                     <div class="home"><a href="Home.html">Home</a></div>
                     <div class="toernooi"><a href="Toernooi.html">Toernooi</a></div>
-                    <div class="inschrijvingen"><a href="Inschrijvingen.html">Inschrijvingen</a></div>
+                    <div class="scores"><a href="Scores.html">Inschrijvingen</a></div>
                     <div class="searchbar">
                         <input type="text" placeholder="Search..." name="search" id="zoekterm">
                         <button type="submit" onclick=zoeken()>Zoek!</button>
@@ -22,9 +23,8 @@
         </header>
         <hr>
 
-        <h1>Welkom op de website van Squashclub 'De Warme Bal'</h1>
+        <h1 id="welkom">Welkom op de website van Squashclub 'De Warme Bal'</h1>
         <hr>
-
 
     </body>
 </html>

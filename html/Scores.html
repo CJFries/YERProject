@@ -3,7 +3,8 @@
     <head>
         <link rel="stylesheet" href="..\style\generalstyle.css">
         <script src="..\script\homejs.js"></script>
-        <title>Inschrijven</title>
+        <script src="..\script\jquery-3.4.1.min.js"></script>
+        <title>Scores</title>
     </head>
 
     <body>
@@ -12,7 +13,7 @@
                     <nav class="navigatie">
                         <div class="home"><a href="Home.html">Home</a></div>
                         <div class="toernooi"><a href="Toernooi.html">Toernooi</a></div>
-                        <div class="inschrijvingen"><a href="Inschrijvingen.html">Inschrijvingen</a></div>
+                        <div class="scores"><a href="Scores.html">Inschrijvingen</a></div>
                         <div class="searchbar">
                             <input type="text" placeholder="Search..." name="search" id="zoekterm">
                             <button type="submit" onclick=zoeken()>Zoek!</button>
@@ -20,14 +21,10 @@
                     </nav>
                 </div>
         </header>
-        <hr>
 
-        <div class="ophaalgegevens">
-        <h1>Zie alle inschijvingen voor het 'Warme Bal Toernooi'</h1>
-        <hr><br>
-        <input type="button" value="Zie alle inschrijvingen" onclick=ophalen()><br><br>
-        </div>
-        <div id="memberlist"></div>
+        <input type="button" value="haal scores op" onclick=scoresOphalen()>
+        <hr>
+        <div class="scorelijst"></div>
 
     </body>
 </html>

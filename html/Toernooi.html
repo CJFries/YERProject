@@ -3,16 +3,17 @@
     <head>
         <link rel="stylesheet" href="..\style\generalstyle.css">
         <script src="..\script\homejs.js"></script>
-        <title>Inschrijven</title>
+        <script src="..\script\jquery-3.4.1.min.js"></script>
+        <title>Toernooi</title>
     </head>
 
-    <body>
+    <body onload="ophalenInschrijvingen()">
         <header>
                 <div>
                     <nav class="navigatie">
                         <div class="home"><a href="Home.html">Home</a></div>
                         <div class="toernooi"><a href="Toernooi.html">Toernooi</a></div>
-                        <div class="inschrijvingen"><a href="Inschrijvingen.html">Inschrijvingen</a></div>
+                        <div class="scores"><a href="Scores.html">Inschrijvingen</a></div>
                         <div class="searchbar">
                             <input type="text" placeholder="Search..." name="search" id="zoekterm">
                             <button type="submit" onclick=zoeken()>Zoek!</button>
@@ -26,9 +27,9 @@
         <h1>Schrijf je hieronder in voor het 'Warme Bal Toernooi'</h1>
         <hr><br>
         <form class="inschrijfgegevens">
-        <b>Voornaam: </b><input type="text" placeholder="Voornaam" id="vn"><br>
-        <b>Achternaam: </b><input type="text" placeholder="Achternaam" id="an"><br>
-        <b>Rating: </b><input type="number" placeholder="5" id="rating"><br>
+        <b>Voornaam: </b><input type="text" value="Voornaam" id="vn"><br>
+        <b>Achternaam: </b><input type="text" value="Achternaam" id="an"><br>
+        <b>Rating: </b><input type="number" value="5" id="rating"><br>
         <section>
             <label for="geslacht"><b>Geslacht: </b></label>
             <select name="geslacht" id="geslacht">
@@ -36,10 +37,22 @@
               <option value="Vrouw">Vrouw</option>
               </select>
           </section><br>
-          <b>Geboortedatum: </b><input type="date" id="gebdat"><br><br>
-          <input type="button" value="Schrijf in!" onclick=versturen()><br><br>
+          <b>Geboortedatum: </b><input type="date" id="gebdat" value="2005-05-05"><br><br>
+          <input type="button" value="Schrijf in!" onclick=sendAndLoad()><br><br>
           </form>
         </div>
+
+        <hr>
+
+        <div class="ophaalgegevens">
+        <h1>Zie alle inschijvingen voor het 'Warme Bal Toernooi'</h1>
+        <hr><br>
+        
+        </div>
+        <div id="memberlist"></div>
+        <hr>
+        <div id="totaalaantalspelers"></div>
+
 
     </body>
 </html>
