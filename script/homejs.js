@@ -1,5 +1,10 @@
 
-function ophalen() {
+function sendAndLoad() {
+    inschrijvenToernooi();
+    window.location.reload();
+}
+
+function ophalenInschrijvingen() {
     //alert("opgehaald");
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -9,20 +14,22 @@ function ophalen() {
             var haalGegevens = JSON.parse(haalGegevensJSON);
             console.log(haalGegevens);
             var arr = haalGegevens;
-            var tabel = "<table border = '1'><tr><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rating</th><th>Geboortedatum</th><th>Geslacht</th>"
+            var tabel = "<table border = '1'><tr><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rating</th><th>Leeftijd</th><th>Geslacht</th>"
             for (var i=0;i<arr.length;i++){
-                tabel+="<tr><td>"+arr[i].id+"</td><td>"+arr[i].firstName+"</td><td>"+arr[i].lastName+"</td><td>"+arr[i].rating+"</td><td>"+arr[i].dateOfBirth+"</td><td>"+arr[i].gender+"</td></tr>"
+                tabel+="<tr><td>"+arr[i].id+"</td><td>"+arr[i].firstName+"</td><td>"+arr[i].lastName+"</td><td>"+arr[i].rating+"</td><td>"+arr[i].age+"</td><td>"+arr[i].gender+"</td></tr>"
             }
             tabel+="</table>";
             document.getElementById("memberlist").innerHTML = tabel;
+            document.getElementById("totaalaantalspelers").innerHTML = "Totaal aantal spelers: " + arr.length;
+            //console.log(arr.length);
         }
     }
     xhr.open("GET", "http://localhost:8082/allsquashclubmembers", true);
     xhr.send();
 }
 
-function versturen() {
-    alert("verstuurd")
+function inschrijvenToernooi() {
+    //alert("verstuurd")
     var voornaam = document.getElementById("vn").value;
     var achternaam = document.getElementById("an").value;
     var rating = document.getElementById("rating").value;
@@ -38,10 +45,10 @@ function versturen() {
 
     var mijnGegevens = JSON.stringify(mijnGegevensObject)
     //console.log(mijnGegevens);
-    postData(mijnGegevens);    
+    postDataInschrijvenToernooi(mijnGegevens);    
 }
 
-function postData(data) {
+function postDataInschrijvenToernooi(data) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 202) {
@@ -55,7 +62,6 @@ function postData(data) {
 }
 
 function zoeken() {
-    //alert("gezocht");
     var zoekterm = document.getElementById("zoekterm").value;
     var mijnZoekterm = JSON.stringify(zoekterm);
     var zoekfunctie = new XMLHttpRequest();
@@ -63,4 +69,17 @@ function zoeken() {
     }
     zoekfunctie.open("GET", "http://localhost:8082/zoek/" + zoekterm, true);
     zoekfunctie.send();
+    alert("gezocht op: " + zoekterm);
 }
+
+/*function scoresOphalen() {
+    //alert("opgehaald");
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+    
+        if(this.readyState == 4 && this.status == 200) {
+            var haalScoresJSON = this.responseText;
+        }
+    }  
+}*/
