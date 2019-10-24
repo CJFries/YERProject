@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="..\style\navbarstyle.css">
+        <script src="..\script\homejs.js"></script>
+        <script src="..\script\jquery-3.4.1.min.js"></script>
+        <title>Adminpage</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="navbar">
+                <div class="dropdown">
+                    <button class="dropbtn">Home                   
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="Home.html">Regular Home</a>
+                        <a href="Adminpage.html">Adminpage</a>
+                    </div>
+                </div>              
+                <a href="Toernooi.html">Toernooi</a>
+                <a href="Scores.html">Scores</a>
+                <div class="searchbar">
+                    <input type="text" placeholder="Search..." name="search" id="zoekterm">
+                    <button type="submit" onclick=zoeken()>Zoek!</button>
+                </div>
+            </div>
+        </header>
+
+    </body>
+</html>

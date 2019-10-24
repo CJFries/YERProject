@@ -72,14 +72,22 @@ function zoeken() {
     alert("gezocht op: " + zoekterm);
 }
 
-/*function scoresOphalen() {
-    //alert("opgehaald");
-    var xhr = new XMLHttpRequest();
+function scoresOphalen() {
+}
+
+function scoresInvoeren() {
+    var score1 = document.getElementById("score1").value;
+    var scare2 = document.getElementById("score2").value;
     
-    xhr.onreadystatechange = function() {
-    
-        if(this.readyState == 4 && this.status == 200) {
-            var haalScoresJSON = this.responseText;
-        }
-    }  
-}*/
+}
+
+/*function postDataScoresInvoeren(scoreData) {
+    //alert();
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+
+    }
+    xhttp.open("POST", "http://localhost:8082/scoreinput", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(scoreData);
+} */
