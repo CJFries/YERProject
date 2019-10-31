@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="..\style\generalstyle.css">
         <link rel="stylesheet" href="..\style\navbarstyle.css">
         <script src="..\script\homejs.js"></script>
         <script src="..\script\jquery-3.4.1.min.js"></script>
         <title>Adminpage</title>
+
+        <script>
+
+            function dataOphalenOnload() {
+                ophalenInschrijvingen();
+                ophalenWedstrijden();
+            }
+        
+            function wedstrijdAanmaken() {
+                var baan = document.getElementById("baanNummer").value;
+                var speler1 = document.getElementById("idSpeler1").value;
+                var speler2 = document.getElementById("idSpeler2").value;
+                var matchGegevens = '{"baanNummer":"'+baan+'", "idSpeler1":"'+speler1+'", "idSpeler2":"'+speler2+'"}';
+                console.log(matchGegevens);
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    alert(this.readyState + " - " + this.status);
+                    if (this.readyState == 4 && this.status == 202) {
+                        alert("Wedstrijd aangemaakt");
+                    }
+                };
+                xhttp.open("POST", "http://localhost:8082/creatematch", true);
+                xhttp.setRequestHeader("Content-type", "application/json");
+                xhttp.send(matchGegevens);
+            }
+
+            function ophalenWedstrijden() {
+                alert("ophalen wedstrijden");
+            }
+
+        </script>
     </head>
 
-    <body>
+    <body onload="dataOphalenOnload()">
         <header>
             <div class="navbar">
                 <div class="dropdown">
@@ -15,7 +47,7 @@
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
-                        <a href="Home.html">Regular Home</a>
+                        <a href="Home.html">Home</a>
                         <a href="Adminpage.html">Adminpage</a>
                     </div>
                 </div>              
@@ -25,8 +57,58 @@
                     <input type="text" placeholder="Search..." name="search" id="zoekterm">
                     <button type="submit" onclick=zoeken()>Zoek!</button>
                 </div>
+                <a href="Inloggen.html">Inloggen</a>
             </div>
+        <div class="knopjes">
+            <input type="button" id="genSpelerlijst" value="Spelerlijst">
+            <input type="button" id="wedstrijdAanmaken" value="Maak wedstrijd aan">
+            <input type="button" id="genWedstrijdlijst" value="Wedstrijdlijst">
+
+        </div>
         </header>
 
+        <div>
+        <h1 id="kopAdminpage">Adminpage</h1>
+        </div>
+
+        <hr>
+        <div class="admindivs" id="maakWedstrijd" style="display: none;">
+            <h2>Maak wedstrijd aan</h2>
+            Baannummer: <input type="number" id="baanNummer" value="7"><br>
+            ID speler 1: <input type="number" id="idSpeler1" value="1"><br>
+            ID speler 2: <input type="number" id="idSpeler2" value="2"><br>
+            <input type="button" value="Wedstrijd aanmaken" onclick=wedstrijdAanmaken()>
+        <br><br><hr>
+        </div>
+
+        <div class="admindivs" id="ledenlijst" style="display: none;">
+        <h2 id="ledenlijstnaam"></h2>
+        <div id="memberlist"></div>
+        <div id="totaalaantalspelers"></div>
+        <hr>
+        </div>
+
+        <div class="admindivs" id="wedstrijdlijst" style="display: none;">
+        <h2>Wedstrijdlijst</h2>
+        <div id="matchlist"></div>
+        <div id="totaalaantalwedstrijden"></div>
+        </div>
+
+        
+
     </body>
+
+    <script>
+        $("#wedstrijdAanmaken").click(function() {
+            $("#maakWedstrijd").toggle();
+        });
+
+        $("#genSpelerlijst").click(function() {
+            $("#ledenlijst").toggle();
+        });
+
+        $("#genWedstrijdlijst").click(function() {
+            $("#wedstrijdlijst").toggle();
+        });
+    </script>
 </html>
