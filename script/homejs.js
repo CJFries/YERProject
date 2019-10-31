@@ -22,6 +22,7 @@ function ophalenInschrijvingen() {
             document.getElementById("memberlist").innerHTML = tabel;
             document.getElementById("totaalaantalspelers").innerHTML = "Totaal aantal spelers: " + arr.length;
             //console.log(arr.length);
+            document.getElementById("ledenlijstnaam").innerHTML = "Spelerlijst: ";
         }
     }
     xhr.open("GET", "http://localhost:8082/allsquashclubmembers", true);
@@ -77,17 +78,6 @@ function scoresOphalen() {
 
 function scoresInvoeren() {
     var score1 = document.getElementById("score1").value;
-    var scare2 = document.getElementById("score2").value;
+    var score2 = document.getElementById("score2").value;
     
 }
-
-/*function postDataScoresInvoeren(scoreData) {
-    //alert();
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-
-    }
-    xhttp.open("POST", "http://localhost:8082/scoreinput", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(scoreData);
-} */
