@@ -22,6 +22,7 @@ function ophalenInschrijvingen() {
             document.getElementById("memberlist").innerHTML = tabel;
             document.getElementById("totaalaantalspelers").innerHTML = "Totaal aantal spelers: " + arr.length;
             //console.log(arr.length);
+            document.getElementById("ledenlijstnaam").innerHTML = "Spelerlijst: ";
         }
     }
     xhr.open("GET", "http://localhost:8082/allsquashclubmembers", true);
@@ -72,12 +73,14 @@ function zoeken() {
     alert("gezocht op: " + zoekterm);
 }
 
-/*function scoresOphalen() {
-    //alert("opgehaald");
-    var xhr = new XMLHttpRequest();
+function scoresOphalen() {
+}
+
+function scoresInvoeren() {
+    var score1 = document.getElementById("score1").value;
+    var score2 = document.getElementById("score2").value;
     
-    xhr.onreadystatechange = function() {
-    
+<<<<<<< HEAD
         if(this.readyState == 4 && this.status == 200) {
             var haalScoresJSON = this.responseText;
         }
@@ -205,4 +208,6 @@ function addUserToResult(username, password, role){
     demo.append(document.createElement("BR"));
     demo.append(document.createElement("LABEL").innerText = "Password: "+ password);
     demo.append(document.createElement("HR"));
+=======
+>>>>>>> master
 }

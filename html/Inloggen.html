@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="..\style\generalstyle.css">
+        <link rel="stylesheet" href="..\style\navbarstyle.css">
+        <script src="..\script\homejs.js"></script>
+        <script src="..\script\jquery-3.4.1.min.js"></script>
+        <title>Inlogpagina | De Warme Bal</title>        
+        
+        <script>
+
+            function naarAdminPagina() {
+                window.location.href = "Adminpage.html";
+            }
+
+            function naarHomePagina() {
+                window.location.href = "Home.html";
+            }
+
+            function inloggen() {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                if (username && password) {
+                    var inloggegevens = '{"username":"'+username+'", "password":"'+password+'"}';
+                    if (username == "admin" && password == "admin") {
+                        naarAdminPagina();  
+                    } else {
+                        naarHomePagina();
+                    }
+                } else {
+                    document.getElementById("inlogtext").innerHTML = "Vul alle velden in";
+                }
+            }   
+        </script>
+
+    </head>
+
+    <body>
+        <header>
+                <div class="navbar">
+                    <div class="dropdown">
+                        <button class="dropbtn">Home                   
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="Home.html">Home</a>
+                            <a href="Adminpage.html">Adminpage</a>
+                        </div>
+                    </div>              
+                    <a href="Toernooi.html">Toernooi</a>
+                    <a href="Scores.html">Scores</a>
+                    <div class="searchbar">
+                        <input type="text" placeholder="Search..." name="search" id="zoekterm">
+                        <button type="submit" onclick=zoeken()>Zoek!</button>
+                    </div>
+                    <a href="Inloggen.html">Inloggen</a>
+                </div>
+            </header>
+
+        <div class="inlogdiv">
+            <input type="text" id="username" placeholder="username">
+            <input type="password" id="password" placeholder="password">
+            <input type="button" value="Inloggen" onclick=inloggen()>
+            <br>
+            <div id="inlogtext"></div>
+        </div>
+
+
+
+    </body>
+</html>
