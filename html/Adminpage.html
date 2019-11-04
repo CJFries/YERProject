@@ -29,7 +29,7 @@
 
                     }
                 };
-                xhttp.open("POST", "http://localhost:8082/admin/creatematch", true);
+                xhttp.open("POST", "http://localhost:8082/admin/creatematch/"+speler1+"/"+speler2, true);
                 xhttp.setRequestHeader("Content-type", "application/json");
                 xhttp.send(matchGegevens);
             }
@@ -46,7 +46,7 @@
                         var arr = getAllMatches;
                         var tabel = "<table border = '1'><tr><th>Match ID</th><th>Speler 1</th><th>Speler 2</th><th>Baan</th>"
                         for (var i=0;i<arr.length;i++){
-                            tabel+="<tr><td>"+arr[i].match_id+"</td><td>"+arr[i].idPlayer1+"</td><td>"+arr[i].idPlayer2+"</td><td>"+arr[i].courtNumber+"</td></tr>"
+                            tabel+="<tr><td>"+arr[i].match_id+"</td><td>"+arr[i].player1.firstName+" "+arr[i].player1.lastName+"</td><td>"+arr[i].player2.firstName+" "+arr[i].player2.lastName+"</td><td>"+arr[i].courtNumber+"</td></tr>"
                         }
                         tabel+="</table>";
                         document.getElementById("matchlist").innerHTML = tabel;
@@ -108,7 +108,7 @@
         <hr>
         <div class="admindivs" id="maakWedstrijd" style="display: none;">
             <h2>Maak wedstrijd aan</h2>
-            courtNumber: <input type="number" id="courtNumber" value="7"><br>
+            Baannummer: <input type="number" id="courtNumber" value="7"><br>
             ID speler 1: <input type="number" id="idSpeler1" value="1"><br>
             ID speler 2: <input type="number" id="idSpeler2" value="2"><br>
             <input type="button" value="Wedstrijd aanmaken" onclick=wedstrijdAanmaken()>
