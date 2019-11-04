@@ -15,27 +15,53 @@
             }
         
             function wedstrijdAanmaken() {
-                var baan = document.getElementById("baanNummer").value;
+                var baan = document.getElementById("courtNumber").value;
                 var speler1 = document.getElementById("idSpeler1").value;
                 var speler2 = document.getElementById("idSpeler2").value;
-                var matchGegevens = '{"baanNummer":"'+baan+'", "idSpeler1":"'+speler1+'", "idSpeler2":"'+speler2+'"}';
+                var matchGegevens = '{"courtNumber":"'+baan+'", "idPlayer1":"'+speler1+'", "idPlayer2":"'+speler2+'"}';
                 console.log(matchGegevens);
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
-                    //alert(this.readyState + " - " + this.status);
-                    if (this.readyState == 4 && this.status == 202) {
-                        alert("Wedstrijd aangemaakt");
+
+                    console.log(this.readyState + " - " + this.status);
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log("Wedstrijd aangemaakt");
+
                     }
                 };
-                xhttp.open("POST", "http://localhost:8082/creatematch", true);
+                xhttp.open("POST", "http://localhost:8082/admin/creatematch/"+speler1+"/"+speler2, true);
                 xhttp.setRequestHeader("Content-type", "application/json");
                 xhttp.send(matchGegevens);
             }
 
             function ophalenWedstrijden() {
                 console.log("ophalen wedstrijden");
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if(this.readyState == 4 && this.status == 200) {
+                        var allMatchesJSON = this.responseText;
+                        console.log(allMatchesJSON);
+                        var getAllMatches = JSON.parse(allMatchesJSON);
+                        console.log(getAllMatches);
+                        var arr = getAllMatches;
+                        var tabel = "<table border = '1'><tr><th>Match ID</th><th>Speler 1</th><th>Speler 2</th><th>Baan</th>"
+                        for (var i=0;i<arr.length;i++){
+                            tabel+="<tr><td>"+arr[i].match_id+"</td><td>"+arr[i].player1.firstName+" "+arr[i].player1.lastName+"</td><td>"+arr[i].player2.firstName+" "+arr[i].player2.lastName+"</td><td>"+arr[i].courtNumber+"</td></tr>"
+                        }
+                        tabel+="</table>";
+                        document.getElementById("matchlist").innerHTML = tabel;
+                        document.getElementById("totaalaantalwedstrijden").innerHTML = "Totaal aantal wedstrijden: " + arr.length;
+                        //console.log(arr.length);
+                        
+                    }
+                }
+                xhr.open("GET", "http://localhost:8082/admin/allmatches", true);
+                xhr.send();
+
+
             }
 
+            
         </script>
     </head>
 
@@ -82,7 +108,7 @@
         <hr>
         <div class="admindivs" id="maakWedstrijd" style="display: none;">
             <h2>Maak wedstrijd aan</h2>
-            Baannummer: <input type="number" id="baanNummer" value="7"><br>
+            Baannummer: <input type="number" id="courtNumber" value="7"><br>
             ID speler 1: <input type="number" id="idSpeler1" value="1"><br>
             ID speler 2: <input type="number" id="idSpeler2" value="2"><br>
             <input type="button" value="Wedstrijd aanmaken" onclick=wedstrijdAanmaken()>
