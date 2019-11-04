@@ -14,19 +14,28 @@ function ophalenInschrijvingen() {
             var haalGegevens = JSON.parse(haalGegevensJSON);
             console.log(haalGegevens);
             var arr = haalGegevens;
-            var tabel = "<table border = '1'><tr><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rating</th><th>Leeftijd</th><th>Geslacht</th>"
+            var tabel = "<table border = '1'><tr><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rating</th><th>Leeftijd</th><th>Geslacht</th><th></th>"
             for (var i=0;i<arr.length;i++){
-                tabel+="<tr><td>"+arr[i].id+"</td><td>"+arr[i].firstName+"</td><td>"+arr[i].lastName+"</td><td>"+arr[i].rating+"</td><td>"+arr[i].age+"</td><td>"+arr[i].gender+"</td></tr>"
+                tabel+="<tr><td>"+arr[i].squashClubMemberId+"</td><td>"+arr[i].firstName+"</td><td>"+arr[i].lastName+"</td><td>"+arr[i].rating+"</td><td>"+arr[i].age+"</td><td>"+arr[i].gender+"</td><td><button class='deletebtn' onclick='deleteMember("+arr[i].squashClubMemberId+")' style='vertical-align:middle'><span>Delete</span></button></td></tr>"
             }
             tabel+="</table>";
             document.getElementById("memberlist").innerHTML = tabel;
             document.getElementById("totaalaantalspelers").innerHTML = "Totaal aantal spelers: " + arr.length;
             //console.log(arr.length);
-            document.getElementById("ledenlijstnaam").innerHTML = "Spelerlijst: ";
+            document.getElementById("ledenlijstnaam").innerHTML = "Spelerlijst ";
         }
     }
     xhr.open("GET", "http://localhost:8082/allsquashclubmembers", true);
     xhr.send();
+}
+
+function deleteMember(squashClubMemberId) {
+    console.log("delete");
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () { }
+    xhr.open("DELETE", "http://localhost:8082/squashclubmembers/" + squashClubMemberId + "/delete", true)
+    xhr.send();
+    window.location.reload();
 }
 
 function inschrijvenToernooi() {

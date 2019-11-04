@@ -11,7 +11,10 @@ h2 {
 
 .admindivs {
     text-align: center;
-    background-color: rgb(153, 100, 62);
+    background-color: lightgrey;
+    border-left: 6px solid black;
+    border-bottom: 4px solid black;
+    border-radius: 5px;
 }
 
 .inschrijfgegevens {
@@ -32,5 +35,81 @@ h2 {
 table {
     margin-left: auto;
     margin-right: auto;
-    background-color: #f6b93b;
+    background-color: white;
+    border: 1px solid black;
 }
+
+td {
+    padding: 5px;
+    text-align: left;
+}
+
+th {
+    background-color: black;
+    color: white;
+    height: 30px;
+}
+
+tr:hover {
+    background-color: lightgrey;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 25%;
+    height: auto;
+}
+
+div.polaroid {
+    width: 40%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+  }
+  
+  div.container {
+    text-align: center;
+    padding: 10px 20px;
+  }
+
+  .deletebtn {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: chocolate;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    width: 80px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .deletebtn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .deletebtn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .deletebtn:hover span {
+    padding-right: 25px;
+  }
+  
+  .deletebtn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
