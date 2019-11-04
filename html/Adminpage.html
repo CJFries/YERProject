@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="..\style\navbarstyle.css">
         <script src="..\script\homejs.js"></script>
         <script src="..\script\jquery-3.4.1.min.js"></script>
-        <title>Adminpage</title>
+        <title>Adminpage | De Warme Bal</title>
 
         <script>
 
@@ -22,9 +22,11 @@
                 console.log(matchGegevens);
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
+
                     console.log(this.readyState + " - " + this.status);
                     if (this.readyState == 4 && this.status == 200) {
                         console.log("Wedstrijd aangemaakt");
+
                     }
                 };
                 xhttp.open("POST", "http://localhost:8082/admin/creatematch", true);
@@ -55,6 +57,8 @@
                 }
                 xhr.open("GET", "http://localhost:8082/admin/allmatches", true);
                 xhr.send();
+
+
             }
 
             
@@ -72,9 +76,16 @@
                         <a href="Home.html">Home</a>
                         <a href="Adminpage.html">Adminpage</a>
                     </div>
-                </div>              
-                <a href="Toernooi.html">Toernooi</a>
-                <a href="Scores.html">Scores</a>
+                </div> 
+                <div class="dropdown">
+                    <button class="dropbtn">Toernooi
+                        <i class="fa fa-caret-down"></i>
+                    </button> 
+                    <div class="dropdown-content">            
+                        <a href="Toernooi.html">Inschrijven</a>
+                        <a href="Scores.html">Resultaten</a>
+                    </div>
+                </div>
                 <div class="searchbar">
                     <input type="text" placeholder="Search..." name="search" id="zoekterm">
                     <button type="submit" onclick=zoeken()>Zoek!</button>
@@ -85,6 +96,7 @@
             <input type="button" id="genSpelerlijst" value="Spelerlijst">
             <input type="button" id="wedstrijdAanmaken" value="Maak wedstrijd aan">
             <input type="button" id="genWedstrijdlijst" value="Wedstrijdlijst">
+            <input type="button" id="scoresToevoegenbtn" value="Voeg scores toe">
 
         </div>
         </header>
@@ -100,23 +112,31 @@
             ID speler 1: <input type="number" id="idSpeler1" value="1"><br>
             ID speler 2: <input type="number" id="idSpeler2" value="2"><br>
             <input type="button" value="Wedstrijd aanmaken" onclick=wedstrijdAanmaken()>
-        <br><br><hr>
+        <br><br>
         </div>
 
         <div class="admindivs" id="ledenlijst" style="display: none;">
         <h2 id="ledenlijstnaam"></h2>
+        <div id="totaalaantalspelers"></div><br>
         <div id="memberlist"></div>
-        <div id="totaalaantalspelers"></div>
-        <hr>
+        <br><br>
         </div>
 
         <div class="admindivs" id="wedstrijdlijst" style="display: none;">
         <h2>Wedstrijdlijst</h2>
         <div id="matchlist"></div>
         <div id="totaalaantalwedstrijden"></div>
+        <br><br>
         </div>
 
-        
+        <div class="admindivs" id="scoreToevoegen" style="display: none;">
+        <h2>Scores toevoegen</h2>
+        Match ID: <input type="number" value="0" id="match_id"><br>
+        Score speler 1: <input type="number" value="11" id="score1"><br>
+        Score speler 2: <input type="number" value="7" id="score2"><br>
+        <input type="button" value="Score invoeren" id="scoreInvoeren" onclick=scoresInvoeren()>
+        <br><br>
+        </div>
 
     </body>
 
@@ -131,6 +151,10 @@
 
         $("#genWedstrijdlijst").click(function() {
             $("#wedstrijdlijst").toggle();
+        });
+
+        $("#scoresToevoegenbtn").click(function() {
+            $("#scoreToevoegen").toggle();
         });
     </script>
 </html>

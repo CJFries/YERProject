@@ -26,6 +26,7 @@
                         naarAdminPagina();  
                     } else {
                         naarHomePagina();
+                        alert("Gegevens onjuist. Je wordt doorgestuurd naar de homepagina");
                     }
                 } else {
                     document.getElementById("inlogtext").innerHTML = "Vul alle velden in";
@@ -37,29 +38,37 @@
 
     <body>
         <header>
-                <div class="navbar">
-                    <div class="dropdown">
-                        <button class="dropbtn">Home                   
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="Home.html">Home</a>
-                            <a href="Adminpage.html">Adminpage</a>
-                        </div>
-                    </div>              
-                    <a href="Toernooi.html">Toernooi</a>
-                    <a href="Scores.html">Scores</a>
-                    <div class="searchbar">
-                        <input type="text" placeholder="Search..." name="search" id="zoekterm">
-                        <button type="submit" onclick=zoeken()>Zoek!</button>
+            <div class="navbar">
+                <div class="dropdown">
+                    <button class="dropbtn">Home                   
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="Home.html">Home</a>
+                        <a href="Inloggen.html">Adminpage</a>
                     </div>
-                    <a href="Inloggen.html">Inloggen</a>
+                </div> 
+                <div class="dropdown">
+                    <button class="dropbtn">Toernooi
+                        <i class="fa fa-caret-down"></i>
+                    </button> 
+                    <div class="dropdown-content">            
+                        <a href="Toernooi.html">Inschrijven</a>
+                        <a href="Scores.html">Resultaten</a>
+                    </div>
                 </div>
-            </header>
+                <div class="searchbar">
+                    <input type="text" placeholder="Search..." name="search" id="zoekterm">
+                    <button type="submit" onclick=zoeken()>Zoek!</button>
+                </div>
+                <a href="Inloggen.html">Inloggen</a>
+            </div>
+        
+        </header>
 
         <div class="inlogdiv">
-            <input type="text" id="username" placeholder="username">
-            <input type="password" id="password" placeholder="password">
+            <input type="text" id="username" value="admin">
+            <input type="password" id="password" value="admin">
             <input type="button" value="Inloggen" onclick=inloggen()>
             <br>
             <div id="inlogtext"></div>
