@@ -14,9 +14,9 @@ function ophalenInschrijvingen() {
             var haalGegevens = JSON.parse(haalGegevensJSON);
             console.log(haalGegevens);
             var arr = haalGegevens;
-            var tabel = "<table border = '1'><tr><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rating</th><th>Leeftijd</th><th>Geslacht</th>"
+            var tabel = "<table border = '1'><tr><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rating</th><th>Leeftijd</th><th>Geslacht</th><th>Delete</th>"
             for (var i=0;i<arr.length;i++){
-                tabel+="<tr><td>"+arr[i].id+"</td><td>"+arr[i].firstName+"</td><td>"+arr[i].lastName+"</td><td>"+arr[i].rating+"</td><td>"+arr[i].age+"</td><td>"+arr[i].gender+"</td></tr>"
+                tabel+="<tr><td>"+arr[i].squashClubMemberId+"</td><td>"+arr[i].firstName+"</td><td>"+arr[i].lastName+"</td><td>"+arr[i].rating+"</td><td>"+arr[i].age+"</td><td>"+arr[i].gender+"</td><td><input type='button' value='[]' onclick='deleteMember()'</td></tr>"
             }
             tabel+="</table>";
             document.getElementById("memberlist").innerHTML = tabel;
