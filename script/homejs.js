@@ -86,7 +86,24 @@ function scoresOphalen() {
 }
 
 function scoresInvoeren() {
+    var match_id = document.getElementById("match_id").value;
     var score1 = document.getElementById("score1").value;
     var score2 = document.getElementById("score2").value;
+    var scoreObject = {}
+    scoreObject.scorePlayer1 = score1;
+    scoreObject.scorePlayer2 = score2;
+    scoreObject.match_id = match_id;
+    var scoreGegevens = JSON.stringify(scoreObject)
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+        console.log(scoreGegevens);
+        if(this.readyState == 4 && this.status == 202){
+            document.getElementById("demo").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("PUT", "http:/localhost:8082/admin/scoreinput/"+match_id+"/"+score1+"/"+score2, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(scoreGegevens);
     
 }

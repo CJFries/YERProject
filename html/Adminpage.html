@@ -27,13 +27,34 @@
                         alert("Wedstrijd aangemaakt");
                     }
                 };
-                xhttp.open("POST", "http://localhost:8082/creatematch", true);
+                xhttp.open("POST", "http://localhost:8082/admin/creatematch/"+speler1+"/"+speler2+"/"+baan, true);
                 xhttp.setRequestHeader("Content-type", "application/json");
                 xhttp.send(matchGegevens);
             }
 
             function ophalenWedstrijden() {
                 console.log("ophalen wedstrijden");
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if(this.readyState == 4 && this.status == 200) {
+                        var allMatchesJSON = this.responseText;
+                        console.log(allMatchesJSON);
+                        var getAllMatches = JSON.parse(allMatchesJSON);
+                        console.log(getAllMatches);
+                        var arr = getAllMatches;
+                        var tabel = "<table border = '1'><tr><th>Match ID</th><th>Baan</th><th>Speler 1</th><th>Speler 2</th><th>Score wedstrijd</th>"
+                        for (var i=0;i<arr.length;i++){
+                            tabel+="<tr><td>"+arr[i].match_id+"</td><td>"+arr[i].courtNumber+"</td><td>"+arr[i].player1.firstName+" "+arr[i].player1.lastName+"</td><td>"+arr[i].player2.firstName+" "+arr[i].player2.lastName+"</td><td>"+arr[i].result+"</td></tr>"
+                        }
+                        tabel+="</table>";
+                        document.getElementById("matchlist").innerHTML = tabel;
+                        document.getElementById("totaalaantalwedstrijden").innerHTML = "Totaal aantal wedstrijden: " + arr.length;
+                        //console.log(arr.length);
+                        
+                    }
+                }
+                xhr.open("GET", "http://localhost:8082/admin/allmatches", true);
+                xhr.send();
             }
 
         </script>
