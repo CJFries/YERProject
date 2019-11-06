@@ -44,7 +44,7 @@
                         var getAllMatches = JSON.parse(allMatchesJSON);
                         console.log(getAllMatches);
                         var arr = getAllMatches;
-                        var tabel = "<table border = '1'><tr><th>Match ID</th><th>Baan</th><th>Speler 1</th><th>Speler 2</th><th>Score wedstrijd</th>"
+                        var tabel = "<table border = '1'><tr><th>Match ID</th><th>Baan</th><th>Speler 1</th><th>Speler 2</th><th>Score wedstrijd</th><th>Datum & tijd wedstrijd</th>"
                         for (var i=0;i<arr.length;i++){
                             tabel+="<tr><td>"+arr[i].match_id+"</td><td>"+arr[i].courtNumber+"</td><td>"+arr[i].player1.firstName+" "+arr[i].player1.lastName+"</td><td>"+arr[i].player2.firstName+" "+arr[i].player2.lastName+"</td><td>"+arr[i].result+"</td></tr>"
                         }
