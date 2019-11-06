@@ -1,7 +1,7 @@
 
 function sendAndLoad() {
     inschrijvenToernooi();
-    window.location.reload();
+    //window.location.reload();
 }
 
 function ophalenInschrijvingen() {
@@ -54,7 +54,7 @@ function inschrijvenToernooi() {
     mijnGegevensObject.dateOfBirth = geboortedatum;
 
     var mijnGegevens = JSON.stringify(mijnGegevensObject)
-    //console.log(mijnGegevens);
+    console.log(mijnGegevens);
     postDataInschrijvenToernooi(mijnGegevens);    
 }
 
